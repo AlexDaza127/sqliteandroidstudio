@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import OpenHelper.SQLiteBaseDatos;
+import openhelper.SQLiteBaseDatos;
 
 public class RegistroActivity extends AppCompatActivity {
 

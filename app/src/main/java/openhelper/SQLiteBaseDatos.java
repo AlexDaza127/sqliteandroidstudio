@@ -1,4 +1,4 @@
-package OpenHelper;
+package openhelper;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -62,5 +62,9 @@ public class SQLiteBaseDatos extends SQLiteOpenHelper {
                 null);
 
         return consulta;
+    }
+
+    public void consultarUsuarios(){
+
     }
 }

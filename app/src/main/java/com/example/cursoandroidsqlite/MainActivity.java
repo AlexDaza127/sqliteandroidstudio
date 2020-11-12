@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import OpenHelper.SQLiteBaseDatos;
+import openhelper.SQLiteBaseDatos;
 
 public class MainActivity extends AppCompatActivity {
 
