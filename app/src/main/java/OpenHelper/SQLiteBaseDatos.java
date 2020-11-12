@@ -14,13 +14,7 @@ public class SQLiteBaseDatos extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "" +
-                "CREATE TABLE usuarios (" +
-                "ID integer primary key autoincrementable, " +
-                "Nombre text," +
-                "Distrito text," +
-                "Correo text," +
-                "Password text);";
+        String query = "create table usuarios (ID integer primary key autoincrement, Nombre text, Distrito text, Correo text, Password text);";
         db.execSQL(query);
     }
 
