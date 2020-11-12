@@ -11,9 +11,12 @@ import java.util.ArrayList;
 
 import entidades.UsuariosVo;
 
-public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDatos> {
+public class AdapterDatos
+        extends RecyclerView.Adapter<AdapterDatos.ViewHolderDatos>
+        implements View.OnClickListener{
 
     ArrayList<UsuariosVo> listUsuarios;
+    private View.OnClickListener btnModal;
 
     public AdapterDatos(ArrayList<UsuariosVo> listUsuarios) {
         this.listUsuarios = listUsuarios;
@@ -24,6 +27,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
     public ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list,null,false);
+        view.setOnClickListener(this);
 
         return new ViewHolderDatos(view);
     }
@@ -41,6 +45,17 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
     @Override
     public int getItemCount() {
         return listUsuarios.size();
+    }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        this.btnModal = listener;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(btnModal!=null){
+            btnModal.onClick(v);
+        }
     }
 
     public class ViewHolderDatos extends RecyclerView.ViewHolder {

@@ -3,6 +3,8 @@ package com.example.cursoandroidsqlite;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,22 +31,22 @@ public class PrincipalActivity extends AppCompatActivity {
         rcvUsuarios.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
         listDatos = new ArrayList<UsuariosVo>();
 
-        //llenarUsuarios();
         consultarUsuarios();
 
-
         AdapterDatos adaptador = new AdapterDatos(listDatos);
+
+        adaptador.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(
+                        getApplicationContext(),
+                        "Selección: " + listDatos.get(rcvUsuarios.getChildAdapterPosition(v)).getNombre(),
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+
         rcvUsuarios.setAdapter(adaptador);
     }
-
-  /*  public void llenarUsuarios(){
-
-
-        listDatos.add(new UsuariosVo(1,"Alex","Bogotá","Alex@gmail","aaaa"));
-        listDatos.add(new UsuariosVo(2,"Alex","Bogotá","Alex@gmail","bbbb"));
-        listDatos.add(new UsuariosVo(3,"Alex","Bogotá","Alex@gmail","cccc"));
-        listDatos.add(new UsuariosVo(4,"Alex","Bogotá","Alex@gmail","dddd"));
-    }*/
 
     public void consultarUsuarios(){
         SQLiteDatabase db = helper.getReadableDatabase();
