@@ -40,12 +40,6 @@ public class PrincipalActivity extends AppCompatActivity {
 
         AdapterDatos adaptador = new AdapterDatos(listDatos);
 
-        btnConsultarUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                consultarPorUser(edtNomCon.getText().toString());
-            }
-        });
 
         btnMostrarTodos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,25 +80,5 @@ public class PrincipalActivity extends AppCompatActivity {
         }
         helper.cerrar();
     }
-
-    public void consultarPorUser(String id){
-        helper.abrir();
-        SQLiteDatabase db = helper.getReadableDatabase();
-        UsuariosVo usuario = null;
-        Cursor cursor = db.rawQuery("SELECT * FROM usuarios WHERE ID = "+id+"", null);
-
-        while(cursor.moveToNext()){
-            usuario = new UsuariosVo();
-            usuario.setId(cursor.getInt(0));
-            usuario.setNombre(cursor.getString(1));
-            usuario.setDistrito(cursor.getString(2));
-            usuario.setCorreo(cursor.getString(3));
-            usuario.setPassword(cursor.getString(4));
-
-            listDatos.add(usuario);
-        }
-        helper.cerrar();
-    }
-
 
 }
